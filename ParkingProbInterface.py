@@ -1,4 +1,4 @@
-from guizero import App, Box, Text, TextBox, Picture, PushButton
+from guizero import App, Box, Picture, PushButton
 from PIL import Image
 
 ### This is the code for the user interface, including updating the text and resizing images ###
@@ -62,7 +62,7 @@ def update_text_box(updated_text):
 # Create the application
 app = App(title='Parking Problem', width=500, height=350)
 
-container = Box(app, layout='grid')
+container = Box(app, layout='grid') # sets up the layout in a grid format
 
 # Create an invisible box to hold the image
 picture_box = Box(container, grid=[0, 0])
