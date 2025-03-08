@@ -10,7 +10,7 @@ def extractExifData(imagePath):
             if tag in ExifTags.TAGS
         }
         return exif
-    else:
+    else: # should add other method to get exif data
         return {}
     
     def IdentFreeParkingSpots(imagePath):

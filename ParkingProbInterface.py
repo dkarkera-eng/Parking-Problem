@@ -1,5 +1,6 @@
 from guizero import App, Box, Picture, PushButton
 from PIL import Image
+import ParkingProbBackend as ppb
 
 ### This is the code for the user interface, including updating the text and resizing images ###
 
@@ -69,21 +70,18 @@ picture_box = Box(container, grid=[0, 0])
 # Create the image and set it to the start.jpg file included in this directory
 display_image = Picture(picture_box, image=generate_display_picture(
     'start.jpg', DISPLAY_IMAGE_SIZE))
-# Create the text box for article text
-#wiki_text = TextBox(content_box, multiline=True, enabled=False, scrollbar=True,
-                    #text="Please choose an image to identify.", width='fill', height='fill')
 
 ### End user interface code ###
 
-
-def update_picture():
+# this function takes the selected image and runs other functions as needed
+def selectedPicture():
     pic = app.select_file()
-    display_image.image = generate_display_picture(pic, DISPLAY_IMAGE_SIZE)
+    print(ppb.extractExifData(pic))
 
 
 # This line creates a button with the text 'Select picture' and tells it to run the update_picture function when clicked
 # It has to come later than the other interface code, as it needs the update_picture function to be created first
-button = PushButton(container, text='Select picture', command=update_picture,grid=[0, 0],width=10)
+button = PushButton(container, text='Select picture', command=selectedPicture,grid=[0, 0],width=10)
 
 button.tk.place(x=180, y=300) # adjusting the location of the button
 
