@@ -77,7 +77,7 @@ display_image = Picture(picture_box, image=generate_display_picture(
 def selectedPicture():
     pic = app.select_file()
     print(ppb.extractExifData(pic))
-    generate_display_picture(pic, DISPLAY_IMAGE_SIZE)
+    display_image.image = generate_display_picture(pic, DISPLAY_IMAGE_SIZE)
 
 
 # This line creates a button with the text 'Select picture' and tells it to run the update_picture function when clicked
