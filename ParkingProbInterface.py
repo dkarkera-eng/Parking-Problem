@@ -61,7 +61,7 @@ def update_text_box(updated_text):
 
 
 # Create the application
-app = App(title='Parking Problem', width=500, height=350)
+app = App(title='Parking Problem', width=500, height=500)
 
 container = Box(app, layout='grid') # sets up the layout in a grid format
 
@@ -77,13 +77,16 @@ display_image = Picture(picture_box, image=generate_display_picture(
 def selectedPicture():
     pic = app.select_file()
     print(ppb.extractExifData(pic))
-    
+    ident = ppb.IdentFreeParkingSpots(pic)
+    update_text_box(ident)
+
 
 # This line creates a button with the text 'Select picture' and tells it to run the update_picture function when clicked
 # It has to come later than the other interface code, as it needs the update_picture function to be created first
-button = PushButton(container, text='Select picture', command=selectedPicture,grid=[0, 0],width=10)
+button = PushButton(container, text='Select picture', command=selectedPicture,grid=[1, 0],width=10)
 
 button.tk.place(x=180, y=300) # adjusting the location of the button
+
 
 # Display the whole interface — this has to come after the button, the last piece of the interface, is created
 app.display()
